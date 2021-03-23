@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">
+{% endblock style %}
+{% block content %}
+<div class="tableContainer">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Total Time Taken</th>
+            </tr>
+        </thead>
+        <tbody id='table'>
+
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+{% block script %}
+{% autoescape off %}
+{{ profiles|json_script:"board-data" }}
+    <script src="{% static 'js/leaderboard.js' %}"></script>
+{% endautoescape %}
+{% endblock script %}

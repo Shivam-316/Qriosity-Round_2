@@ -1,0 +1,7 @@
+.tableContainer{
+    display: block;
+    height: 20em;
+    overflow-y: auto;
+    max-width: 60vw;
+    margin: auto;
+}

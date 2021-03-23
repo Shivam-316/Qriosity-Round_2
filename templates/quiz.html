@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+{% endblock style %}
+{% block content %}
+<div id="loader" class="hidden"></div>
+<div id="game" class="quiz">
+  <div id="hud">
+    <div id="hud-item">
+      <p id="progressText" class="hud-prefix">
+        
+      </p>
+      <div class="progress">
+        <div id="progressBarFull" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+        </div>
+      </div>
+    </div>
+    <div id="hud-item">
+      <p class="hud-prefix">
+        Timer
+      </p>
+      <h1 class="hud-main-text" id="timer">
+        
+      </h1>
+    </div>
+  </div>
+  <h1 id="question" class="question"></h1>
+  <div class="choice-container">
+    <p class="choice-prefix">A</p>
+    <p class="choice-text" ></p>
+  </div>
+  <div class="choice-container">
+    <p class="choice-prefix">B</p>
+    <p class="choice-text" ></p>
+  </div>
+  <div class="choice-container">
+    <p class="choice-prefix">C</p>
+    <p class="choice-text" ></p>
+  </div>
+  <div class="choice-container">
+    <p class="choice-prefix">D</p>
+    <p class="choice-text" ></p>
+  </div>
+</div>
+<form id="answer-form" action="{% url 'checkAns' %}" method="POST" style="display: none;">{% csrf_token %}
+  {{ form }}
+</form>
+<form action="{% url 'quiz' %}" method="POST" id="next-question-form" style="display: none;">{% csrf_token %}
+  {{ time }}
+</form>
+{% endblock content %}
+
+{% block script %}
+  {% autoescape off %}
+    {{ data|json_script:"data" }}
+    <script src="{% static 'js/quiz.js' %}"></script>
+  {% endautoescape %}
+{% endblock script %}
