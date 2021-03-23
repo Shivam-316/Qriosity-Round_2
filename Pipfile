@@ -13,4 +13,4 @@ django-environ = "*"
 [dev-packages]
 
 [requires]
-python_version = "3.8.6"
+python_version = "3.7.8"
