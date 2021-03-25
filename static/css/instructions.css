@@ -1,6 +1,6 @@
 .login_button {
     display: block;
-    width: 8em;
+    width: 50%;
     text-decoration: none;
     border-radius: 25px;
     outline: none;
@@ -10,9 +10,13 @@
     border: #1a84c2;
     font-size: 1.2rem;
     color: #fff;
-    margin: 1rem 0;
+    margin: auto;
 }
 .login_button:hover{
     background-color: #1a84c2;
     cursor: pointer;
+}
+.list{
+    line-height: 2em;
+    font-size: large;
 }

@@ -1,0 +1,69 @@
+._button {
+    display: block;
+    width: 50%;
+    height: 50px;
+    text-decoration: none;
+    border-radius: 25px;
+    outline: none;
+    padding: 10px;
+    text-align: center;
+    background-color: skyblue;
+    border: #1a84c2;
+    font-size: 1.2rem;
+    color: #fff;
+    margin: auto;
+}
+._button:hover{
+    background-color: #1a84c2;
+    cursor: pointer;
+}
+.helptxt{
+    color: grey;
+}
+.disabled {
+    background-color: grey;
+}
+.disabled:hover{
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+
+.timerDiv {
+    display: inline-block;
+    line-height: 1;
+    font-size: 1em;
+}
+
+.timerSpan {
+display: block;
+font-size: 1em;
+color: #1a84c2;
+}
+
+#timer{
+    text-align: center;
+    padding-top: 1em;
+}
+
+#days {
+    font-size: 1.8rem;
+    color:  #1a84c2;
+    padding: 0 0.8em 0.8em 0;
+}
+#hours {
+    font-size: 1.8rem;
+    color: #1a84c2;
+}
+#minutes {
+    font-size: 1.8rem;
+    color: #1a84c2;
+    padding: 0 0.8em 0.8em 0;
+}
+#seconds {
+    font-size: 1.8rem;
+    color: #1a84c2;
+}
+.dhms{
+    color: white;
+}

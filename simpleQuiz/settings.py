@@ -136,7 +136,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-LOGIN_REDIRECT_URL='/quiz/'
+LOGIN_REDIRECT_URL='/countdown/'
 LOGIN_URL='login/'
 
 LOGOUT_REDIRECT_URL='/'

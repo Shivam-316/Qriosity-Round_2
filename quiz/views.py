@@ -10,7 +10,13 @@ from datetime import datetime,timedelta
 from django.contrib.auth.decorators import login_required
 import time
 import pytz
+
+#------------ Global Constants -----------#
 IST = pytz.timezone('Asia/Kolkata')
+starttime = IST.localize(datetime(2021,3,25,21,5,0,0))
+endtime = IST.localize(datetime(2021,3,25,21,7,0,0))
+#-----------------------------------------#
+
 # Create your views here.
 @login_required
 def checkAns(request):
@@ -50,14 +56,15 @@ def quizView(request):
             questionObject = get_next_question(profile)
             data = get_context_obj(questionObject,profile)
             return JsonResponse(data)
-    elif request.method=="GET" and (profile.started_quiz or datetime.now(tz=IST) <= datetime(2021,3,22,19,50,0,0,tzinfo=IST)):
-        return redirect(reverse_lazy('leaderboard'))
     elif request.method == "GET":
-        profile.started_quiz = True
-        profile.save()
-        questionObject = get_question_obj(profile)
-        data = get_context_obj(questionObject,profile)
-        return render(request,'quiz.html',{"data":data,"form":AnswerForm,'time':TimeForm,'winner':profile.winner})
+        if profile.started_quiz == False and starttime < datetime.now(tz=IST) < endtime:
+            profile.started_quiz = True
+            profile.save()
+            questionObject = get_question_obj(profile)
+            data = get_context_obj(questionObject,profile)
+            return render(request,'quiz.html',{"data":data,"form":AnswerForm,'time':TimeForm,'winner':profile.winner})
+        else:
+            return redirect(reverse_lazy('leaderboard'))
 
 
 
@@ -98,15 +105,9 @@ def get_context_obj(questionObject,profile):
 
 
 def leaderboardView(request):
-    profiles = Profile.objects.filter()
+    profiles = Profile.objects.filter(user__is_staff=False)
     leaderboard_data = []
     for profile in profiles:
         leaderboard_data.append({'user':profile.user.username,'score':profile.score,'time':profile.time_taken})
     data = {'profiles':leaderboard_data}
     return render(request,'leaderboard.html',data)
-
-def homeView(request):
-    return render(request,'home.html',{})
-
-def instructionsView(request):
-    return render(request,'instructions.html',{})

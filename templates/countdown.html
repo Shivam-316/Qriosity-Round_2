@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/countdown.css' %}">
+{% endblock style %}
+{% block content %}
+    <div class="text-center">
+        <div class="timerDiv" id="timer">
+            <h1 class="mb-5">Quiz Starts In</h1>
+            <div class="timerDiv" id="days"></div>
+            <div class="timerDiv" id="hours"></div><br>
+            <div class="timerDiv" id="minutes"></div>
+            <div class="timerDiv" id="seconds"></div>
+        </div>
+        <button href="{% url 'quiz' %}" class="_button" id="button">Start Quiz</button>
+        <p class="helptxt mt-2">Do Read Instructions Before Attempting Quiz.</p>
+    </div>
+{% endblock content %}  
+{% block script %}
+  <script src="{% static 'js/countdown.js' %}"></script>
+{% endblock script %}

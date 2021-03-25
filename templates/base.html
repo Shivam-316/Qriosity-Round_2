@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     {% load static %}
-    <head>
-        <meta charset="UTF-8">
+    <head><meta charset="windows-1252">
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <title>ACM Qriosity</title>
+        <title>ACM Qriosity | Round 2</title>
         {% block style %}
         
         {% endblock style %}
@@ -22,7 +22,7 @@
                 <li><a href="{% url 'instructions' %}">Instructions</a></li>
                 <li class="centering"><a href="{% url 'home' %}"><img src="{% static 'images/acmwhitelogo.png' %}"></a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'quiz' %}">Quiz</a></li>
+                    <li><a href="{% url 'countdown' %}">Quiz</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Log In</a></li>
@@ -50,14 +50,33 @@
                         </a>
                     </div>
                 </div>
-                <div class="mobile-bottom-nav__item">
-                    <div class="mobile-bottom-nav__item-content">
-                        <a href="{% url 'login' %}">
-                            <i class="material-icons">person</i>
-                            Log In
-                        </a>
+                {% if user.is_authenticated %}
+                    <div class="mobile-bottom-nav__item">
+                        <div class="mobile-bottom-nav__item-content">
+                            <a href="{% url 'countdown' %}">
+                                <i class="material-icons">quiz</i>
+                                Quiz
+                            </a>
+                        </div>
                     </div>
-                </div>
+                    <div class="mobile-bottom-nav__item">
+                        <div class="mobile-bottom-nav__item-content">
+                            <a href="{% url 'logout' %}">
+                                <i class="material-icons">logout</i>
+                                Log Out
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="mobile-bottom-nav__item">
+                        <div class="mobile-bottom-nav__item-content">
+                            <a href="{% url 'login' %}">
+                                <i class="material-icons">person</i>
+                                Log In
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
 
                 <div class="mobile-bottom-nav__item">
                     <div class="mobile-bottom-nav__item-content">
@@ -93,7 +112,7 @@
             </span>
             <span class="font-weight-bold">Copyright</span>
         </p>
-        <h5 class="text-justify text-center h">Made with 💗 by ACM  JUIT Web Development Team</h5>
+        <h5 class="text-justify text-center h">Made with 💗 by ACM JUIT Web Development Team</h5>
     </footer>
 </html>
 {% block script %}

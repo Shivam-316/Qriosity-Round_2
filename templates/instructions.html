@@ -4,9 +4,20 @@
   <link rel="stylesheet" href="{% static 'css/instructions.css' %}">
 {% endblock style %}
 {% block content %}
-    <h1>Instructions</h1>
-    <a href="{% url 'login' %}"><button class="login_button">Login</button></a>
+  <h1 class="text-center mb-5">Instructions</h1>
+  <div class="row justify-content-center">
+  <ul class="list">
+    <li>Make sure you’re registered on Qriosity Portal.</li>
+    <li>This will be an MCQ round with 1 correct answer.</li>
+    <li>There are a total of ____ questions in this round.</li>
+    <li>Each question has a time limit of 15 seconds.</li>
+    <li>For each correct answer you will get 5 points, and for each wrong answer 3 points will be deducted.</li>
+    <li>0 points for not attempting a question, but 15 seconds will be added to your total time taken.</li>
+    <li>The one who completes the quiz in minimum time and with maximum score will be the winner for this round.</li>
+    <li>You won’t be able to re-visit any question.</li>
+    <li>Once the quiz timer starts, it can not be paused.</li>
+    <li>Make sure you have a stable internet connection, the quiz can not be resumed.</li>
+  </ul>
+  </div>
+  <a href="{% url 'login' %}"><button class="login_button">Login</button></a>
 {% endblock content %}
-{% block script %}
-  
-{% endblock script %}
