@@ -13,8 +13,8 @@ import pytz
 
 #------------ Global Constants -----------#
 IST = pytz.timezone('Asia/Kolkata')
-starttime = IST.localize(datetime(2021,3,25,21,5,0,0))
-endtime = IST.localize(datetime(2021,3,25,21,7,0,0))
+starttime = IST.localize(datetime(2021,3,26,10,40,0,0))
+endtime   = IST.localize(datetime(2021,3,26,11,0,0,0))
 #-----------------------------------------#
 
 # Create your views here.
@@ -58,7 +58,7 @@ def quizView(request):
             return JsonResponse(data)
     elif request.method == "GET":
         if profile.started_quiz == False and starttime < datetime.now(tz=IST) < endtime:
-            profile.started_quiz = True
+            #profile.started_quiz = True
             profile.save()
             questionObject = get_question_obj(profile)
             data = get_context_obj(questionObject,profile)
@@ -98,7 +98,7 @@ def get_context_obj(questionObject,profile):
             'D':questionObject.choice4,
             'total_ques': profile.total_ques,
             'attempted':profile.attempted,
-            'progress':(profile.attempted/profile.total_ques)*100,
+            'progress':int((profile.attempted/profile.total_ques)*100),
             'timer':questionObject.timer,
             'winner':profile.winner
         }
@@ -111,3 +111,8 @@ def leaderboardView(request):
         leaderboard_data.append({'user':profile.user.username,'score':profile.score,'time':profile.time_taken})
     data = {'profiles':leaderboard_data}
     return render(request,'leaderboard.html',data)
+
+def countDownView(request):
+    start = starttime.isoformat()
+    end = endtime.isoformat()
+    return render(request,'countdown.html',{'timers':{'start':start,'end':end}})

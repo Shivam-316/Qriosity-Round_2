@@ -1,10 +1,10 @@
+const timers = JSON.parse(document.getElementById('timers').textContent);
+const starttime = Date.parse(timers.start) / 1000;
+const endtime = Date.parse(timers.end) / 1000;
+
 function makeTimer() {
-    let starttime = new Date("2021-03-25T20:25:00+05:30");
-    let endtime = new Date("2021-03-25T20:55:00+05:30");
     let now = new Date();
-    starttime/=1000;
-    endtime/=1000;
-    now/=1000;
+    now = Date.parse(now) / 1000;
     const button = $('#button');
     if(now > starttime && now < endtime){
         if(button.hasClass('disabled')){

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from quiz.views import quizView,checkAns,leaderboardView
+from quiz.views import quizView,checkAns,leaderboardView,countDownView
 from django.contrib.auth.views import LoginView,LogoutView
 from userProfile.views import signUpView
 from django.views.generic import TemplateView 
@@ -26,7 +26,7 @@ urlpatterns = [
     path('signup/',signUpView,name="signup"),
     path('check/',checkAns,name='checkAns'),
     path('leaderboard/',leaderboardView,name='leaderboard'),
-    path('countdown/',TemplateView.as_view(template_name='countdown.html'),name='countdown'),
+    path('countdown/',countDownView,name='countdown'),
     path('quiz/',quizView,name='quiz'),
     path('instructions/',TemplateView.as_view(template_name='instructions.html'),name='instructions'),
     path('',TemplateView.as_view(template_name='home.html'),name='home')

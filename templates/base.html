@@ -16,81 +16,79 @@
     </head>
     <body>
         <header>
-        <div class="align">
-            <ul class="nav-list">
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                <li><a href="{% url 'instructions' %}">Instructions</a></li>
-                <li class="centering"><a href="{% url 'home' %}"><img src="{% static 'images/acmwhitelogo.png' %}"></a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'countdown' %}">Quiz</a></li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
-                {% else %}
-                    <li><a href="{% url 'login' %}">Log In</a></li>
-                {% endif %}
-                <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
-            </ul>
-        </div>
+            <div class="align hidden">
+                <ul class="nav-list">
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'instructions' %}">Instructions</a></li>
+                    <li class="centering"><a href="{% url 'home' %}"><img src="{% static 'images/acmwhitelogo.png' %}"></a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'countdown' %}">Quiz</a></li>
+                        <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Log In</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+                </ul>
+            </div>
 
-        <!-- Mobile view  begin -->
-        <div class="mobile">
-            <nav class="mobile-bottom-nav">
-                <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
-                    <div class="mobile-bottom-nav__item-content">
-                        <a href="{% url 'home' %}">
-                            <i class="material-icons">home</i>
-                            Home
-                        </a>
-                    </div>
-                </div>
-                <div class="mobile-bottom-nav__item">
-                    <div class="mobile-bottom-nav__item-content">
-                        <a href="{% url 'signup' %}">
-                            <i class="material-icons">person_add_alt</i>
-                            Sign Up
-                        </a>
-                    </div>
-                </div>
-                {% if user.is_authenticated %}
-                    <div class="mobile-bottom-nav__item">
+            <!-- Mobile view  begin -->
+            <div class="mobile hidden">
+                <nav class="mobile-bottom-nav">
+                    <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
                         <div class="mobile-bottom-nav__item-content">
-                            <a href="{% url 'countdown' %}">
-                                <i class="material-icons">quiz</i>
-                                Quiz
+                            <a href="{% url 'home' %}">
+                                <i class="material-icons">home</i>
+                                Home
                             </a>
                         </div>
                     </div>
                     <div class="mobile-bottom-nav__item">
                         <div class="mobile-bottom-nav__item-content">
-                            <a href="{% url 'logout' %}">
-                                <i class="material-icons">logout</i>
-                                Log Out
+                            <a href="{% url 'signup' %}">
+                                <i class="material-icons">person_add_alt</i>
+                                Sign Up
                             </a>
                         </div>
                     </div>
-                {% else %}
+                    {% if user.is_authenticated %}
+                        <div class="mobile-bottom-nav__item">
+                            <div class="mobile-bottom-nav__item-content">
+                                <a href="{% url 'countdown' %}">
+                                    <i class="material-icons">quiz</i>
+                                    Quiz
+                                </a>
+                            </div>
+                        </div>
+                        <div class="mobile-bottom-nav__item">
+                            <div class="mobile-bottom-nav__item-content">
+                                <a href="{% url 'logout' %}">
+                                    <i class="material-icons">logout</i>
+                                    Log Out
+                                </a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="mobile-bottom-nav__item">
+                            <div class="mobile-bottom-nav__item-content">
+                                <a href="{% url 'login' %}">
+                                    <i class="material-icons">person</i>
+                                    Log In
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+
                     <div class="mobile-bottom-nav__item">
                         <div class="mobile-bottom-nav__item-content">
-                            <a href="{% url 'login' %}">
-                                <i class="material-icons">person</i>
-                                Log In
+                            <a href="{% url 'instructions' %}">
+                                <i class="material-icons">help</i>
+                                Instruction
                             </a>
                         </div>
                     </div>
-                {% endif %}
-
-                <div class="mobile-bottom-nav__item">
-                    <div class="mobile-bottom-nav__item-content">
-                        <a href="{% url 'instructions' %}">
-                            <i class="material-icons">help</i>
-                            Instruction
-                        </a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <!-- Mobile view end -->
-
-
+                </nav>
+            </div>
+            <!-- Mobile view end -->
         </header>
         <section>
             <div class="container pb-4">

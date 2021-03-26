@@ -15,7 +15,10 @@
         <button href="{% url 'quiz' %}" class="_button" id="button">Start Quiz</button>
         <p class="helptxt mt-2">Do Read Instructions Before Attempting Quiz.</p>
     </div>
-{% endblock content %}  
+{% endblock content %}
 {% block script %}
-  <script src="{% static 'js/countdown.js' %}"></script>
+  {% autoescape off %}
+    {{ timers|json_script:"timers" }}
+    <script src="{% static 'js/countdown.js' %}"></script>
+  {% endautoescape %}
 {% endblock script %}
